@@ -21,15 +21,15 @@ app.use(express.urlencoded({extended : true}));
 app.use(methodOverride("_method"))
 app.use(express.static(path.join(__dirname,"/public")))
 
-app.use(session({
-    secret: process.env.SECRET,
-    resave:false,
-    saveUninitialized:true,
-    cookie:{
-        expires: Date.now() + 1 * 24 * 60 * 60 * 1000,
-        maxAge : 1 * 24 * 60 * 60 * 1000,
-    }
-}));
+// app.use(session({
+//     secret: process.env.SECRET,
+//     resave:false,
+//     saveUninitialized:true,
+//     cookie:{
+//         expires: Date.now() + 1 * 24 * 60 * 60 * 1000,
+//         maxAge : 1 * 24 * 60 * 60 * 1000,
+//     }
+// }));
 app.use(flash());
 
 const dbURL = process.env.ATLASDB_URL;
