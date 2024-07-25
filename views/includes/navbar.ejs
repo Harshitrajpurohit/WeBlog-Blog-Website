@@ -7,10 +7,10 @@
     </div>
     <div class="navbar-nav nav-second">
         <% if (userData) { %>
-            <a class="nav-link btn btn-primary" href="/logout">Logout</a>
+            <a class="nav-link btn btn-primary" onclick="click()" href="/logout">Logout</a>
             
         <% } else { %>
-            <a class="nav-link btn btn-primary" href="/login">Login</a>
+            <a class="nav-link btn btn-primary" onclick="click()" href="/login">Login</a>
         <% } %>
         <a class="nav-link btn btn-primary" href="/creator">Creator</a>
     </div>
