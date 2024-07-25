@@ -146,7 +146,6 @@ app.post("/register", async (req, res) => {
     if (password !== confirmPassword) {
         return res.send('Passwords do not match. Please try again.');
     }
-
     try {
         const existingUsername = await User.findOne({ username });
         if (existingUsername) {
@@ -156,8 +155,8 @@ app.post("/register", async (req, res) => {
         if (existingEmail) {
             return res.send("User already exists. Please login.");
         }
-        const user = new User({ username, email });
-        await User.register(user, password);
+        const user = new User({ username, email,password });
+        user.save();
         req.flash('userRegistered', "Successfully registered, Please Login");
         res.redirect("/login");
     } catch (err) {
