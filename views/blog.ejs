@@ -1,0 +1,14 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="blog-heading">
+        <h2>All Blogs</h2>
+    </div>
+    <div class="blog">
+    <% for(let listing of allListings) {%>
+        <div class="blog-lising">
+            <a href="/blog/<%= listing.id %>"><img src="<%= listing.image %>" alt=""></a>
+            <p><%= listing.title %></p>
+        </div>
+    <% } %>
+    </div>
+</body>

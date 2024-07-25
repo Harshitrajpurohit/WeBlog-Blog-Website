@@ -1,0 +1,68 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <% if(msg && msg.length){ %>
+        <div class="alert alert-success" role="alert">
+            <%= msg %>
+        </div>
+        <% } %>
+    <div class="login-page">
+        <div id="signin">
+            <form method="post" action="/register">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username" name="username">
+                </div>
+                <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" required class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Confirm Password</label>
+                    <input type="password" required class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" name="confirmPassword">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div id="login" style="display: none;" >
+            <form method="post" action="/login">
+                <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" required class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <button id="btn" class="aleradyAccountbtn" onclick="change()">already have account?</button>
+    </div>
+    <script>
+        let signin = document.querySelector("#signin")
+            let login = document.querySelector("#login")
+            let btn = document.querySelector("#btn")
+
+            let a=0;
+            function change(){
+                if(a==0){
+                    signin.style.display = "none";
+                    login.style.display = "block";
+                    btn.innerText = "Create An Account"
+                    a=1;
+                }
+                else if(a==1){
+                    signin.style.display = "block";
+                    login.style.display = "none";
+                    btn.innerText = "already have account?"
+                    a=0;
+                }
+            }
+    </script>
+</body>

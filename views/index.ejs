@@ -1,0 +1,50 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <% if(msg && msg.length){ %>
+        <div class="alert alert-success" role="alert">
+            <%= msg %>
+        </div>
+        <% } %>
+    <div class="index-main">
+            <img src="/src/background2.jpg" alt="">
+    </div>
+
+    <!-- blog page in main -->
+    <div class="index-blog">
+        <a class="blog-name" href="/blog">Blogs</a>
+        <section class="index-blog-details">
+            <% for(let listing of listings){ %>
+                <div>
+                    <a href="/blog/<%= listing.id %>"><img src="<%= listing.image %>" alt=""></a>
+                    <p><%= listing.title %></p>
+                </div>
+            <% } %>
+        </section>
+    </div>
+
+    <!--creator page -->
+    <div class="index-creator">
+        <a href="/creator">Be a Creater</a>
+    </div>
+    <!-- contect page -->
+    <div class="index-contect" id="About">
+        <h3>About Us</h3>
+        <section class="index-contect-details">
+            <div>
+                <div class="img"></div>
+                <p class="name">Harshit Rajpurohit</p>
+                <p class="address">Email : indianhars10@gmail.com</p>
+            </div>
+            <div>
+                <div class="img"></div>
+                <p class="name">Navneet Agrawal</p>
+                <p class="address">Email : indianhars10@gmail.com</p>
+            </div>
+            <div>
+                <div class="img"></div>
+                <p class="name">Harshit Soni</p>
+                <p class="address">Email : indianhars10@gmail.com</p>
+            </div>
+        </section>
+    </div>
+</body>

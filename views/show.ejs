@@ -1,0 +1,15 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="blog-show-heading">
+        <h2> <%= listing.title %></h2>
+        <div style="display: flex; justify-content: space-around; margin-top: 20px;">
+            <h5>Date: <%= listing.time %></h5>
+            <h5>Author's Username: <%= user.username %></h5>
+        </div>
+    </div>
+    <div class="blog-description">
+        <p><img src="<%= listing.image %>" alt="">
+            <%- listing.description.replace(/\n/g,`<br>`) %>
+        </p>
+    </div>
+</body>

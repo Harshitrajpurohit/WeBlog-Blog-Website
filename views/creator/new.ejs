@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="new">
+        <h3>Fill Title and Description</h3>
+        <div class="new-form">
+            <form method="post" action="/creator/<%= U_Id %>">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Title</label>
+                  <input type="text" required name="title" class="form-control" id="exampleFormControlInput1" placeholder="Title">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Description</label>
+                  <textarea class="form-control" required name="description" id="exampleFormControlTextarea1" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Image URL</label>
+                    <input type="text" name="image" class="form-control" id="exampleFormControlInput1" placeholder="Image URL">
+                </div>
+                <!-- <div class="custom-file">
+                    <label class="custom-file-label" for="customFile">Choose file</label> <br>
+                    <input type="file" name="image" class="custom-file-input"  id="customFile">
+                </div> -->
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>

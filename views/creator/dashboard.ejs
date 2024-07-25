@@ -1,0 +1,25 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="dashboard-user">
+        <h2>Hii : <%= user.username %></h2>
+        <a href="/creator/<%= user.id %>/new">Add Blog</a>
+    </div>
+    <div class="dashboard-blogs">
+        <h3>Your Blogs</h3>
+        <% for(let listing of allListings){ %>
+            <div>
+                <a href="/blog/<%= listing.id %>">
+                    <li><%= listing.title %><p> <%= listing.time %></p></li>
+                </a>
+                <section>
+                    <a href="/creator/<%= listing.id %>/edit">Edit</a>
+                    <form method="post" action="/creator/<%= listing.id %>/?_method=DELETE">
+                        <button>Delete</button>
+                    </form>
+                </section>
+            </div>
+            
+        <% } %>
+    </div>
+
+</body>
