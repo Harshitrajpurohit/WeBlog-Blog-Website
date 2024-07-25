@@ -58,16 +58,15 @@ main().then(() => {
     console.log(err);
 });
 
-let userData = "";
 // Routes
 app.get("/", async (req, res) => {
     let listings = await Listing.find({}).limit(3);
-    res.render("index.ejs", { listings,userData ,msg: req.flash("loggedin") });
+    res.render("index.ejs", { listings, ru:req.user ,msg: req.flash("loggedin"),ru:req.user });
 });
 
 app.get("/blog", async (req, res) => {
     const allListings = await Listing.find({});
-    res.render("blog.ejs", { allListings,userData });
+    res.render("blog.ejs", { allListings,ru:req.user });
 });
 
 app.get("/blog/:id", async (req, res) => {
@@ -75,7 +74,7 @@ app.get("/blog/:id", async (req, res) => {
     let listing = await Listing.findById(id);
     let uid = listing.uid;
     let user = await User.findById(uid);
-    res.render("show.ejs", { listing, user,userData });
+    res.render("show.ejs", { listing, user,ru:req.user });
 });
 
 app.get("/creator", async (req, res) => {
@@ -85,7 +84,7 @@ app.get("/creator", async (req, res) => {
         let { id } = req.user;
         let user = await User.findById(id);
         const allListings = await Listing.find({ uid: id });
-        res.render("creator/dashboard.ejs", { allListings, user,userData });
+        res.render("creator/dashboard.ejs", { allListings, user,ru:req.user });
     }
 });
 
@@ -94,7 +93,7 @@ app.get("/creator/:id/new", async (req, res) => {
         return res.redirect("/login");
     }
     let U_Id = req.params.id;
-    res.render("creator/new.ejs", { U_Id,userData });
+    res.render("creator/new.ejs", { U_Id,ru:req.user });
 });
 
 app.post("/creator/:id", async (req, res) => {
@@ -114,7 +113,7 @@ app.get("/creator/:id/edit", async (req, res) => {
     }
     let id = req.params.id;
     let listing = await Listing.findById(id);
-    res.render("creator/edit.ejs", { listing,userData });
+    res.render("creator/edit.ejs", { listing,ru:req.user });
 });
 
 app.patch("/creator/:id", async (req, res) => {
@@ -137,7 +136,7 @@ app.delete("/creator/:id", async (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-    res.render("authentication/login.ejs", { msg: req.flash("userRegistered"),userData });
+    res.render("authentication/login.ejs", { msg: req.flash("userRegistered"),ru:req.user});
 });
 
 app.post("/register", async (req, res) => {
@@ -164,6 +163,7 @@ app.post("/register", async (req, res) => {
     }
 });
 
+
 app.post("/login", async (req, res, next) => {
     const { email, password } = req.body;
 
@@ -186,8 +186,6 @@ app.post("/login", async (req, res, next) => {
             if (err) {
                 return next(err);
             }
-
-            userData = user; 
             req.flash('loggedin', "Successfully Logged-in");
             return res.redirect("/");
         });
@@ -205,7 +203,6 @@ app.get("/logout", (req, res, next) => {
         if (err) {
             return next(err);
         }
-        userData ="";
         req.flash("loggedin", "Successfully Logged-out");
         res.redirect("/");
     });
