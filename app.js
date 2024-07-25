@@ -177,9 +177,6 @@ app.post("/login", async (req, res, next) => {
             return res.redirect('/login');
         }
 
-        console.log("Provided password:", password);
-        console.log("Stored password:", user.password);
-
         if (password !== user.password) {
             req.flash('error', 'Invalid email or password.');
             return res.redirect('/login');
@@ -208,6 +205,7 @@ app.get("/logout", (req, res, next) => {
         if (err) {
             return next(err);
         }
+        userData ="";
         req.flash("loggedin", "Successfully Logged-out");
         res.redirect("/");
     });
