@@ -1,6 +1,7 @@
 # WeBlog
 
 WeBlog is a FOSS (Free and Open Source Software) blog platform that allows users to engage with a variety of blog posts. Users can explore content, contribute their own posts, and manage their contributions through a user-friendly interface.
+[Launch](https://weblog-ha3o.onrender.com/)
 
 ## Overview
 
@@ -15,7 +16,7 @@ WeBlog provides a dynamic space for users to share their thoughts and experience
 
 ## Demo
 
-Check out the [video demo](#) to see WeBlog in action.
+Check out the [video demo](https://www.youtube.com/watch?v=sbfCMEsk7go) to see WeBlog in action.
 
 ## Installation
 
